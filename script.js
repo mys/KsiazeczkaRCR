@@ -93,5 +93,5 @@ function subtract(who) {
 }
 
 function sendSteemConnect(who, amount, total){
-	window.open('https://steemconnect.com/sign/transfer?from=mys&to=rcr&amount=0.001%20STEEM&memo=' + who + '%20' + amount + '%20RCR%20/%20suma:%20' + total + '%20RCR', '_blank').focus();
+	window.open('https://steemconnect.com/sign/transfer?from=fundacja&to=rcr&amount=0.001%20STEEM&memo=' + who + '%20' + amount + '%20RCR%20/%20suma:%20' + total + '%20RCR', '_blank').focus();
 }
