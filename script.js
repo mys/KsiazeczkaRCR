@@ -1,6 +1,6 @@
 const INITIAL_FETCH_LIMIT = 2000
 
-steem.api.setOptions({ url: 'https://api.steemit.com' })
+steem.api.setOptions({ url: 'https://api.hive.blog' })
 load()
 var users = {}
 
@@ -93,5 +93,5 @@ function subtract(who) {
 }
 
 function sendSteemConnect(who, amount, total){
-	window.open('https://steemconnect.com/sign/transfer?from=fundacja&to=rcr&amount=0.001%20STEEM&memo=' + who + '%20' + amount + '%20RCR%20/%20suma:%20' + total + '%20RCR', '_blank').focus();
+	window.open('https://hivesigner.com/sign/transfer?from=fundacja&to=rcr&amount=0.001%20HIVE&memo=' + who + '%20' + amount + '%20RCR%20/%20suma:%20' + total + '%20RCR', '_blank').focus();
 }
