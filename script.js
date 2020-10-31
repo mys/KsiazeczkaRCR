@@ -1,4 +1,4 @@
-const INITIAL_FETCH_LIMIT = 2000
+const INITIAL_FETCH_LIMIT = 1000
 
 steem.api.setOptions({ url: 'https://api.hive.blog' })
 load()
