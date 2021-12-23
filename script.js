@@ -1,4 +1,4 @@
-const INITIAL_FETCH_LIMIT = 1000
+let INITIAL_FETCH_LIMIT = 1000
 
 steem.api.setOptions({ url: 'https://api.hive.blog' })
 load()
@@ -8,8 +8,23 @@ async function load() {
 	let accountHistory = await steem.api.getAccountHistoryAsync('rcr', -1, INITIAL_FETCH_LIMIT)
 
 	if (!accountHistory) return
-	
 	accountHistory = accountHistory.reverse()
+
+	// load more
+	while (1==1) {
+		let nextSequenceIdToLoad = _.last(accountHistory)[0] - 1
+
+		// If initial load has already loaded the complete history, set status and exit
+		if (nextSequenceIdToLoad <= 0) break
+
+		// From must be greater than limit when calling getAccountHistoryAsync(name, from, limit)
+		if (nextSequenceIdToLoad <= INITIAL_FETCH_LIMIT) {
+			INITIAL_FETCH_LIMIT = nextSequenceIdToLoad
+		}
+
+		let accountHistoryMoreData = await steem.api.getAccountHistoryAsync('rcr', nextSequenceIdToLoad, INITIAL_FETCH_LIMIT)
+		accountHistory = accountHistory.concat(accountHistoryMoreData.reverse())
+	}
 	console.log(accountHistory);
 	
 	accountHistory.forEach((tx) => {
