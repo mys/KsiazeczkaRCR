@@ -1,6 +1,7 @@
 let INITIAL_FETCH_LIMIT = 1000
 
-steem.api.setOptions({ url: 'https://api.hive.blog' })
+//steem.api.setOptions({ url: 'https://api.hive.blog' })
+steem.api.setOptions({ url: 'https://anyx.io' })
 load()
 var users = {}
 
